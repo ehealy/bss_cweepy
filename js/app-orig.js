@@ -1,17 +1,6 @@
 // Start the application when the dom ready event has fired 
 
 $(document).ready(function () {
-  var entrySource   = $("#entry-form").html();
-  var entryTemplate = Handlebars.compile(entrySource);
-
-  
-
-  var cweepSource   = $("#add-cweep-line").html();
-  var cweepTemplate = Handlebars.compile(cweepSource);
-  
-
-
-
   /**
  
   1. Add an event listener for the button 
@@ -30,19 +19,16 @@ $(document).ready(function () {
   **/
 
    $('.add-cweep').on('click', function (ev){
-     var entryContext = {ButtonText: "Post" };
-     var entryHtml    = entryTemplate(entryContext);
-    $('header').append(entryHtml);
+
+    $('header').append("<div class='add-cweep-form'><form><input class='message' type='text'><a class='button'>Post</a></form></div>");
 
     
 
     $('.button').on('click', function (){
 
       var formData = $('.message').val();
-      var cweepContext = {formData: formData };
-      var cweepHtml    = cweepTemplate(cweepContext);
-      $('.cweep-list').append(cweepHtml);
-      $('.add-cweep-form').remove();
+      $('.cweep-list').append("<li><div class='avatar' style='background: url(img/ed.jpg); background-size: 50px 50px;'></div><div class='message'>"+formData+"</div></li>");
+      $('add-cweep-form').remove();
     });
 
 
